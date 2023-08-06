@@ -1,4 +1,4 @@
-# 10 Object-oriented Programming: SVG Logo Maker
+# SVG Logo Maker
 
 ## Your Task
 
@@ -64,7 +64,7 @@ It is recommended that you start with a directory structure that looks like the 
     ├── shapes.test.js  // Jest tests for shapes
     └── more...         // Additional files and tests
 ├── .gitignore          // Indicates which folders and files Git should ignore
-├── index.js            // Runs the application using imports from lib/
+├── index.js            // Runs the application using imports from lib/*****
 ├── package.json
 └── README.md           // App description, link to video, setup and usage instructions           
 ```
@@ -164,4 +164,4 @@ You are required to submit the following for review:
 * The URL of the GitHub repository, with a unique name and a README describing the project.
 
 ---
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
