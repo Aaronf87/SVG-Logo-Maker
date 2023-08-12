@@ -3,12 +3,25 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const questions = require('./lib/questions');
+const Circle = require('./lib/circle')
+const Square = require('./lib/square')
+const Triangle = require('./lib/triangle')
+
 // TODO: Create an array of questions for user input
  const init = () => {
  inquirer.prompt(questions)
      .then((answers) => {
       console.log("creating svg file..")
+      let shape;
+if (answers.imageshape === "triangle"){
+shape = new Triangle()
 
+}if (answers.imageshape === "square"){
+
+shape = new Square()
+}else {
+  shape = new Circle()
+}
 // TODO: Create a function to write README file
 
 
@@ -17,13 +30,13 @@ const generateReadme = ({letters, textcolor, shapecolor, imageshape})=>
 # ${letters} 
 `
 
-const readmePageContent = generateReadme(answers);
-})};
+const svgContent = generateReadme(answers);
+})
 function writeToFile(fileName, data) {
   
 
-  fs.writeFile('shapes.js', readmePageContent, (err) =>
+  fs.writeFile('generateSvg.svg', svgContent, (err) =>
     err ? console.log(err) : console.log('Successfully created SVG logo!')
   );
-};
+};};
 init();
