@@ -25,12 +25,12 @@ shape = new Square()
 // TODO: Create a function to write README file
 
 
-const generateReadme = ({letters, textcolor, shapecolor, imageshape})=>
+const generateSvg = ({letters, textcolor, shapecolor, imageshape})=>
 `
 # ${letters} 
 `
 
-const svgContent = generateReadme(answers);
+const svgContent = generateSvg(answers);
 })
 function writeToFile(fileName, data) {
   
