@@ -12,16 +12,30 @@ const Triangle = require('./lib/triangle.js')
  inquirer.prompt(questions)
      .then((answers) => {
       console.log("creating svg file..")
+
       let shape;
-if (answers.imageshape === "triangle"){
-shape = new Triangle()
+      if (answers.imageshape === "triangle"){
+      shape = new Triangle()
+      
+      }if (answers.imageshape === "square"){
+      
+      shape = new Square()
+      }else {
+        shape = new Circle()
+      };}
+      
+      )
+      .then((shape)=> {
+        const fileName = `svglogo.svg`;
+        function writeToFile(filename, answers) {
 
-}if (answers.imageshape === "square"){
-
-shape = new Square()
-}else {
-  shape = new Circle()
-};
+        fs.writeToFile(fileName, (shape))
+        console.log('created new svg file')
+        ;}
+      })};
+    
+      
+      
 
 // TODO: Create a function to write README file
 
@@ -32,13 +46,12 @@ shape = new Square()
 // `
 
 // const svgContent = generateSvg(answers);
-})
-function writeToFile(fileName, data) {
+// })
   
 
-  fs.writeFile('generateSvg.svg', shape, (err) =>
-    err ? console.log(err) : console.log('Successfully created SVG logo!')
-  );
-};};
+//   fs.writeFile('generateSvg.svg', shape, (err) =>
+//     err ? console.log(err) : console.log('Successfully created SVG logo!')
+//   );
+// };;
 // a function call to start application
 init();
