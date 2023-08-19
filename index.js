@@ -7,31 +7,46 @@ const Circle = require('./lib/circle.js')
 const Square = require('./lib/square.js')
 const Triangle = require('./lib/triangle.js')
 
+function writeToFile(filename, content) {
+
+  fs.writeFile(filename, content, (error) =>{
+    if (error){
+      console.log(error)
+    }else{
+      console.log('created new svg file');
+    }
+  })
+  
+  ;}
+
+
 // TODO: Create an array of questions for user input
  const init = () => {
  inquirer.prompt(questions)
      .then((answers) => {
+      console.log(answers);
       console.log("creating svg file..")
 
       let shape;
       if (answers.imageshape === "triangle"){
-      shape = new Triangle()
+      shape = new Triangle(answers.textcolor, answers.shapecolor,answers.letters)
       
       }if (answers.imageshape === "square"){
       
-      shape = new Square()
+      shape = new Square(answers.textcolor, answers.shapecolor,answers.letters)
       }else {
-        shape = new Circle()
-      };}
-      
+     
+        shape = new Circle(answers.textcolor, answers.shapecolor,answers.letters)
+      }
+    
+      return shape;
+    }
+  
       )
-      .then((shape)=> {
+      .then((s)=> {
+        console.log(s);
         const fileName = `svglogo.svg`;
-        function writeToFile(filename, answers) {
-
-        fs.writeToFile(fileName, (shape))
-        console.log('created new svg file')
-        ;}
+       writeToFile(fileName,s.render());
       })};
     
       
